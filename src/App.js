@@ -64,7 +64,7 @@ export default function App() {
   // divs were clicked
   const handleClicked = (item) => {
     grid.map((gridItem) => {
-      if(!queue.includes(gridItem)){
+      if (!queue.includes(gridItem)) {
         if (gridItem.id === item.id) {
           return setQueue((queueItem) => [...queueItem, gridItem]);
         }
@@ -83,7 +83,10 @@ export default function App() {
 
   // Logic to be added for settimeout and changing back color
   // in every 1 sec
-
+  // setGrid()
+  // if id of queue is equal to id of grid array
+  // update is clicked to false
+  // also set queue to empty after each div is reset
 
   useEffect(() => {
     if (queue.length === 7) {
@@ -98,27 +101,10 @@ export default function App() {
               });
             });
           });
-         
-          // setGrid()
-          // if id of queue is equal to id of grid array
-          // update is clicked to false
         }, i * 1000);
       }
     }
   }, [queue]);
-
-  
-  useEffect(()=>{
-    if(queue.length === 7){
-      for(let i = 0; i< 7; i++){
-        setTimeout(()=>{
-            // setGrid() 
-            // if id of queue is equal to id of grid array
-            // update is clicked to false
-        }, i*1000)
-      }
-    }
-  },[queue])
 
 
   return (
