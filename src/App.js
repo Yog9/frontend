@@ -84,6 +84,30 @@ export default function App() {
   // Logic to be added for settimeout and changing back color
   // in every 1 sec
 
+
+  useEffect(() => {
+    if (queue.length === 7) {
+      for (let i = 0; i < 7; i++) {
+        setTimeout(() => {
+          return queue.map((queueItem, id) => {
+            setGrid((grid) => {
+              return grid.map((gridItem, id) => {
+                return queueItem.id === gridItem.id
+                  ? { ...gridItem, isClicked: false }
+                  : gridItem;
+              });
+            });
+          });
+         
+          // setGrid()
+          // if id of queue is equal to id of grid array
+          // update is clicked to false
+        }, i * 1000);
+      }
+    }
+  }, [queue]);
+
+  
   useEffect(()=>{
     if(queue.length === 7){
       for(let i = 0; i< 7; i++){
