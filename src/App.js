@@ -50,11 +50,6 @@ export default function App() {
     }
   ]);
 
-  // Useeffect written for testing purpose
-  useEffect(() => {
-    console.log("grid", grid);
-    console.log("queue", queue);
-  }, [grid, queue]);
 
   // Sets grid item isClicked to true when clicked and add
   // its to our queue if it is not already in the queue
