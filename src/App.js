@@ -1,7 +1,5 @@
-import React from "react";
-import Box from "./Box";
-
 import { useEffect, useState } from "react";
+import Box from "./Box";
 export default function App() {
   const [queue, setQueue] = useState([]);
   const [grid, setGrid] = useState([
@@ -80,7 +78,6 @@ export default function App() {
     );
   };
 
-
   // Logic to be added for settimeout and changing back color
   // in every 1 sec
   // setGrid()
@@ -89,23 +86,22 @@ export default function App() {
   // also set queue to empty after each div is reset
 
   useEffect(() => {
+    let copyQueue = [...queue];
     if (queue.length === 7) {
       for (let i = 0; i < 7; i++) {
+        let x = copyQueue.shift();// Removes first item from copyQueue
         setTimeout(() => {
-          return queue.map((queueItem, id) => {
-            setGrid((grid) => {
-              return grid.map((gridItem, id) => {
-                return queueItem.id === gridItem.id
-                  ? { ...gridItem, isClicked: false }
-                  : gridItem;
-              });
+          setGrid((grid) => {
+            return grid.map((gridItem, id) => {
+              return x.id === gridItem.id
+                ? { ...gridItem, isClicked: false }
+                : gridItem;
             });
           });
         }, i * 1000);
       }
     }
   }, [queue]);
-
 
   return (
     <div className="App">
