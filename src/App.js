@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import  React,{ useEffect, useState } from "react";
 import Box from "./Box";
 export default function App() {
   const [queue, setQueue] = useState([]);
